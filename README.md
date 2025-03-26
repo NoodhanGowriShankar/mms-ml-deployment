@@ -1,57 +1,123 @@
-```markdown
-# 🚀 MMS Project - FastAPI Deployment on AWS EC2
+# 🚀 Predictive Maintenance Project – FastAPI Deployment on AWS EC2
 
-This repository contains the **Fault Classification API** for rotating machines, built with **FastAPI** and deployed on **AWS EC2**.
+This repository contains the **Fault Classification API** for rotating machinery, built with **FastAPI**, powered by a **1D CNN model**, and deployed on **AWS EC2**. The project was developed during my internship, where I served as the **Product Manager**, leading the entire product lifecycle — from scoping and team coordination to deployment and documentation.
 
-## **📌 Connecting to the AWS EC2 Instance**
-To access the EC2 instance, open a terminal and run:
+---
+
+## 🧠 Project Summary
+
+- ✅ Led product vision, scope, and roadmap
+- ✅ Collaborated with ML team to define model requirements and success metrics
+- ✅ Built and deployed a FastAPI-based ML inference API on AWS EC2
+- ✅ Developed a clean frontend for uploading data and viewing predictions
+- ✅ Provided pre-labeled `.npy` samples for easy testing
+
+---
+
+## 📦 Sample Input Files
+
+The `label_samples/` folder contains example `.npy` files representing real sensor data with known fault classes. These can be used to try out the API without needing to format your own inputs.
+
+> 📎 Shape: Each `.npy` file should be (4, 1013) representing 4 vibration channels over time.  
+> 🧪 Prediction will return the fault class and model confidence.
+
+---
+
+## 📌 Connecting to the AWS EC2 Instance
+
+> ⚠️ AWS credentials and public IP are intentionally excluded for security.
 
 ```bash
-This is currently private to prevent unauthorized access
+ssh -i "path/to/your-key.pem" ec2-user@<public_ip>
 ```
-📌 Replace `<public_ip>` with your actual EC2 instance's public IP.
 
-## **📌 Navigate to the Project Directory**
-Once connected to the EC2 instance, go to the project folder:
+Replace `<public_ip>` with the actual IP of your EC2 instance.
+
+---
+
+## 📂 Navigate to the Project Directory
 
 ```bash
 cd fault-classification
 ```
 
-## **📌 Pull the Latest Changes from GitHub**
-If you've made updates locally, pull the latest changes:
+---
+
+## 🔄 Pull the Latest Changes from GitHub
 
 ```bash
 git pull origin main
 ```
 
-📌 Ensure you're on the correct branch before pulling changes:
+Check current branch:
 ```bash
-git branch  # Check current branch
-git checkout main  # Switch to main branch if needed
+git branch
 ```
 
-## **📌 Activate the Virtual Environment**
-Before running the application, activate the Python virtual environment:
+Switch if needed:
+```bash
+git checkout main
+```
+
+---
+
+## 🧪 Activate the Python Virtual Environment
 
 ```bash
 source venv/bin/activate
 ```
-✅ You should now see the `(venv)` prefix in your terminal.
 
-## **📌 Running the FastAPI Application**
-Start the FastAPI server:
+---
+
+## 🚀 Run the FastAPI Server
 
 ```bash
 uvicorn app:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-🔹 The API will be accessible at:
+---
+
+## 🌐 Access the App
+
+- Main UI: `http://<public_ip>/`
+- Swagger API docs: `http://<public_ip>:8000/docs`
+
+---
+
+## 📁 Project Structure
+
 ```
-http://<public_ip>:8000/docs
+├── app.py                   # FastAPI backend logic
+├── model.py                 # CNN model definition
+├── train.py                 # Training + evaluation
+├── data_loader.py           # Load + preprocess data
+├── main.py                  # End-to-end ML workflow
+├── best_model.keras         # Saved trained model
+├── requirements.txt
+├── templates/index.html     # Frontend form
+├── static/                  # CSS, background, logo
+├── label_samples/           # Pre-labeled test data
+│   ├── sample_label_class_0_sample_0.npy
+│   ├── sample_label_class_1_sample_1.npy
+│   └── ...
+└── README.md
 ```
-or if running behind NGINX:
-```
-http://<public_ip>/
-```
-```
+
+---
+
+## 🧾 Attribution
+
+> ⚠️ Original model code was developed in collaboration with a few data science team member. This repo showcases my ownership of product requirements, technical integration, UI planning, deployment on AWS EC2, and cross-functional execution.
+
+---
+
+## 🧑‍💼 My Product Management Contributions
+
+- 📌 Defined the problem statement and user needs for predictive maintenance  
+- 🧪 Worked with ML team to align on model specs and performance criteria  
+- 🛠️ Implemented FastAPI server with model integration  
+- 🎨 Designed web interface with clear UI/UX for data upload and result display  
+- ☁️ Set up EC2 instance, productionized the API, and configured deployment  
+- 🧾 Created clear documentation for future use, testing, and stakeholder hand-off  
+
+---
