@@ -7,7 +7,7 @@ This repository contains the **Fault Classification API** for rotating machines,
 To access the EC2 instance, open a terminal and run:
 
 ```bash
-ssh -i "C:/Users/kpoli/OneDrive/Desktop/mms/fault-classification/data/aws/mms_fastapi.pem" ec2-user@<public_ip>
+This is currently private to prevent unauthorized access
 ```
 📌 Replace `<public_ip>` with your actual EC2 instance's public IP.
 
